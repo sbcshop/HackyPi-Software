@@ -37,6 +37,7 @@ This repository consist of Example folder there are two files:
 ## Documentation
 
 * [HackyPi Hardware](https://github.com/sbcshop/HackyPi-Hardware) 
+* [HackyPi Schematic](https://github.com/sbcshop/HackyPi-Hardware/blob/main/Design%20Data/SCH.pdf) 
 * [CircuitPython getting started](https://learn.adafruit.com/welcome-to-circuitpython/what-is-circuitpython)
 * [RP2040 Datasheet](https://github.com/sbcshop/HackyPi-Hardware/blob/main/Documents/rp2040-datasheet.pdf)
 * [HackyPi Hardware Design](https://github.com/sbcshop/HackyPi-Hardware/tree/main/Design%20Data)
