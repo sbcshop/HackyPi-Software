@@ -11,8 +11,9 @@ HackyPi is a compact and versatile USB device powered by the RP2040 microcontrol
    <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img.JPG" />
    
 2. * Install **CircuitPython** in RoundyPi
-     Insert the circuit python to the roundypi(it is circuit python firmware "adafruit-circuitpython-raspberry_pi_pico-en_US-7.1.1.uf2"). for this first you need to          press the boot button then connect the USB, don,t release the button until you connect the USB to the laptop. then you see a new device named "RPI-RP2" drag this         file "adafruit-circuitpython- raspberry_pi_pico-en_US-7.1.1.uf2" to this device as shown in figure:
+     Insert the circuit python to the HackyPi. for this first you need to press the boot button then connect the USB, don,t release the button until you connect the USB to the laptop. then you see a new device named "RPI-RP2" drag this file "firmware.uf2" to this device as shown in figure:
      this is the official website, or yoy can download from here https://circuitpython.org/board/raspberry_pi_pico/
+     or you can also download from thif repository "firmware.uf2"
      
      <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img13.png" />  
      When you properly insert the circuitpython then you see a new device that looks like the below image:-
