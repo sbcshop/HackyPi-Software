@@ -8,5 +8,7 @@ HackyPi is a compact and versatile USB device powered by the RP2040 microcontrol
 
    [Thonny](https://thonny.org/)
    
+   <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img.JPG" />
+
 
 
