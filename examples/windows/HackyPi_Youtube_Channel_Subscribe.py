@@ -43,6 +43,7 @@ color_bitmap = displayio.Bitmap(display.width, display.height, 1)
 color_palette = displayio.Palette(1)
 color_palette[0] = BACKGROUND_COLOR
 
+# This section switch On the backlight of TFT
 tft_bl  = board.GP13
 led = digitalio.DigitalInOut(tft_bl)
 led.direction = digitalio.Direction.OUTPUT
@@ -51,8 +52,9 @@ led.value=True
 bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
 splash.append(bg_sprite)
 
+#function to draw rectangle boundary
 def inner_rectangle():
-    # Draw a smaller inner rectangle
+    # Draw a small inner rectangle
     inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
     inner_palette = displayio.Palette(1)
     inner_palette[0] = FOREGROUND_COLOR
@@ -124,4 +126,3 @@ try:
 except Exception as ex:
     keyboard.release_all()
     raise ex
-
