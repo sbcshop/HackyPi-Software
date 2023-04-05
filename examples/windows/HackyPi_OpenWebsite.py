@@ -1,0 +1,134 @@
+# Basic Program to open any website Link,
+# Code also display some text on TFT screen
+# This code works for Windows based PC/Laptop but can be modified for Other OS
+import time
+import os
+import usb_hid
+import digitalio
+import board
+import busio
+import terminalio
+import displayio
+from adafruit_display_text import label
+from adafruit_hid.keyboard import Keyboard, Keycode
+from keyboard_layout_win_uk import KeyboardLayout
+from adafruit_st7789 import ST7789
+
+# Declare some parameters used to adjust style of text and graphics
+BORDER = 12
+FONTSCALE = 2
+FONTSCALE1 = 3
+
+
+BACKGROUND_COLOR = 0xFF0000  # red
+FOREGROUND_COLOR = 0xFFFF00  # Purple
+TEXT_COLOR = 0x000000
+
+# Release any resources currently in use for the displays
+displayio.release_displays()
+
+tft_clk = board.GP10 # must be a SPI CLK
+tft_mosi= board.GP11 # must be a SPI TX
+tft_rst = board.GP12
+tft_dc  = board.GP8
+tft_cs  = board.GP9
+tft_bl  = board.GP13 #GPIO pin to control backlight LED
+spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
+
+#define led (as backlight) pin as output
+led = digitalio.DigitalInOut(tft_bl)
+led.direction = digitalio.Direction.OUTPUT
+led.value=True
+
+# Make the displayio SPI bus and the GC9A01 display
+display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
+display = ST7789(display_bus, rotation=270, width=240, height=135,rowstart=40, colstart=53)
+
+# Make the display context
+splash = displayio.Group()
+display.show(splash)
+
+color_bitmap = displayio.Bitmap(display.width, display.height, 1)
+color_palette = displayio.Palette(1)
+color_palette[0] = BACKGROUND_COLOR
+
+bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
+splash.append(bg_sprite)
+
+def inner_rectangle():
+    # Draw a smaller inner rectangle
+    inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
+    inner_palette = displayio.Palette(1)
+    inner_palette[0] = FOREGROUND_COLOR
+    inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
+    splash.append(inner_sprite)
+inner_rectangle()
+
+# Procedure to display Text on TFT
+text = "Welcome to"
+text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
+text_group = displayio.Group(scale=FONTSCALE1,x=30,y=40,)
+text_group.append(text_area)  # Subgroup for text scaling
+splash.append(text_group)
+
+text1 = "HackyPi"
+text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
+text_group1 = displayio.Group(scale=FONTSCALE1,x=50,y=80,)
+text_group1.append(text_area1)  # Subgroup for text scaling
+splash.append(text_group1)
+
+time.sleep(1)
+
+try:
+    # routine to mimic USB HID devices like keyboard, mouse, etc. through HackyPi
+    keyboard = Keyboard(usb_hid.devices)
+    keyboard_layout = KeyboardLayout(keyboard)
+    time.sleep(2)
+    keyboard.send(Keycode.WINDOWS, Keycode.R) # Executing WIN + R keyboard command
+    time.sleep(0.3)
+    keyboard_layout.write('cmd.exe') # text typing operation of keyboard through HackyPi
+    keyboard.send(Keycode.ENTER)
+    time.sleep(1.2)
+    keyboard.send(Keycode.F11)
+    time.sleep(0.2)
+    keyboard_layout.write("start https://shop.sb-components.co.uk")
+    keyboard.send(Keycode.ENTER)
+    keyboard.release_all()
+except Exception as ex:
+    keyboard.release_all()
+    raise ex
+
+time.sleep(1)
+
+def inner_rectangle1():
+    # Draw a small inner rectangle
+    inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
+    inner_palette = displayio.Palette(1)
+    inner_palette[0] = 0x00FFFF  #cryon
+    inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
+    splash.append(inner_sprite)
+    
+inner_rectangle1()
+
+# Draw a label
+text = "SB COMPONENTS"
+text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
+text_group = displayio.Group(scale=FONTSCALE,x=20,y=30,)
+text_group.append(text_area)  # Subgroup for text scaling
+splash.append(text_group)
+
+# Draw a label
+text1 = "THANKS FOR BUYING"
+text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
+text_group1 = displayio.Group(scale=FONTSCALE,x=20,y=60,)
+text_group1.append(text_area1)  # Subgroup for text scaling
+splash.append(text_group1)
+
+text3 = "OUR PRODUCTS...."
+text_area3 = label.Label(terminalio.FONT, text=text3, color=TEXT_COLOR)
+text_group3 = displayio.Group(scale=FONTSCALE,x=20,y=90,)
+text_group3.append(text_area3)  # Subgroup for text scaling
+splash.append(text_group3)
+
+time.sleep(2)
+
