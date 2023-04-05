@@ -20,9 +20,9 @@ HackyPi is a compact and versatile USB device powered by the RP2040 microcontrol
      <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img11.png" />
 
 
- 3. After this go to run->select interpreter,choose device and port
+3. After this go to run->select interpreter,choose device and port
     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img18.png" />
     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img19.png" />
     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img20.png" />
 
-
+4. Copy all the files from ```lib```
