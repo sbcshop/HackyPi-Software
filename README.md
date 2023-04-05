@@ -4,5 +4,9 @@ HackyPi is a compact and versatile USB device powered by the RP2040 microcontrol
 <img src = "https://github.com/sbcshop/HackyPi-Software/blob/main/images/img.png"/>
 
 ## Setup HackyPi
+1. Download Thonny IDE 
+
+   https://thonny.org/
+   
 
 
