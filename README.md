@@ -36,13 +36,10 @@ This repository consist of Example folder there are two files:
 
 ## Documentation
 
-* [SquaryPi Hardware](https://github.com/sbcshop/SquaryPi-Hardware) 
-* [RaspberryPi PICO Getting Started with Micropython](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html)
-* [RaspberryPi PICO Official website](https://www.raspberrypi.com/documentation/microcontrollers/)
-* [RP2040 Datasheet](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html)
-* [Raspberry Pi Pico Datasheet](https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html)
-* [RP2040 Hardware Design](https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html)
-* [Raspberry Pi Pico Pinout](https://www.raspberrypi.com/documentation/microcontrollers/raspberry-pi-pico.html)
+* [HackyPi Hardware](https://github.com/sbcshop/HackyPi-Hardware) 
+* [CircuitPython getting started](https://learn.adafruit.com/welcome-to-circuitpython/what-is-circuitpython)
+* [RP2040 Datasheet](https://github.com/sbcshop/HackyPi-Hardware/blob/main/Documents/rp2040-datasheet.pdf)
+* [HackyPi Hardware Design](https://github.com/sbcshop/HackyPi-Hardware/tree/main/Design%20Data)
 
 
 ## Related Products
