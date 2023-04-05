@@ -13,7 +13,7 @@ from adafruit_hid.keyboard import Keyboard, Keycode
 from keyboard_layout_win_uk import KeyboardLayout
 from adafruit_st7789 import ST7789
 
-# First set some parameters used for shapes and text
+# Declare some parameters used to adjust style of text and graphics
 BORDER = 12
 FONTSCALE = 3
 BACKGROUND_COLOR = 0xFF0000  # red
