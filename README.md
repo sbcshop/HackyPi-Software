@@ -26,3 +26,5 @@ HackyPi is a compact and versatile USB device powered by the RP2040 microcontrol
     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img20.png" />
 
 4. Copy all the files (library files) from ```lib``` folder of this repository and paste insde HackyPi ```lib``` folder
+
+## Examples Codes  
