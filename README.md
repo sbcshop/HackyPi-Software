@@ -29,5 +29,5 @@ HackyPi is a compact and versatile USB device powered by the RP2040 microcontrol
 
 ## Examples Codes  
 This repository consist of Example folder there are two files:
-  * Windows
-  * Mac
+  * Windows - There are various examples of HackyPi Use in Windows
+  * Mac     - There are various examples of HackyPi Use in Mac
