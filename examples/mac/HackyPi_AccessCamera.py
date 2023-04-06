@@ -100,8 +100,8 @@ try:
     print_onTFT("Photo", 60, 40)
     print_onTFT("Clicked!!", 40, 80)
     time.sleep(1)
-    
     keyboard.release_all()
+    
 except Exception as ex:
     keyboard.release_all()
     raise ex
