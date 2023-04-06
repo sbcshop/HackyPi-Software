@@ -51,30 +51,28 @@ led.value=True
 bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
 splash.append(bg_sprite)
 
-#function to draw rectangle boundary
+# This function creates colorful rectangular box 
 def inner_rectangle():
-    # Draw a small inner rectangle
+    # Draw a smaller inner rectangle
     inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
     inner_palette = displayio.Palette(1)
     inner_palette[0] = FOREGROUND_COLOR
     inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
     splash.append(inner_sprite)
+    
+#Function to print data on TFT
+def print_onTFT(text, x_pos, y_pos): 
+    text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
+    text_group = displayio.Group(scale=FONTSCALE,x=x_pos,y=y_pos,)
+    text_group.append(text_area)  # Subgroup for text scaling
+    splash.append(text_group)
+    
 inner_rectangle()
+print_onTFT("Welcome to", 30, 40)
+print_onTFT("HackPi", 60, 80)
 
-# Draw a label
-text = "Welcome to"
-text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
-text_group = displayio.Group(scale=FONTSCALE,x=30,y=40,)
-text_group.append(text_area)  # Subgroup for text scaling
-splash.append(text_group)
+time.sleep(3)
 
-# Draw a label
-text1 = "HackyPi"
-text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-text_group1 = displayio.Group(scale=FONTSCALE,x=50,y=80,)
-text_group1.append(text_area1)  # Subgroup for text scaling
-splash.append(text_group1)
-time.sleep(5)
 
 try:
     keyboard = Keyboard(usb_hid.devices)
@@ -99,19 +97,8 @@ try:
     keyboard.send(Keycode.ENTER)
     
     inner_rectangle()
-
-    text2 = "History"
-    text_area2 = label.Label(terminalio.FONT, text=text2, color=TEXT_COLOR)
-    text_group2 = displayio.Group(scale=FONTSCALE,x=70,y=40,)
-    text_group2.append(text_area2)  # Subgroup for text scaling
-    splash.append(text_group2)
-
-    # Draw a label
-    text1 = "Deleted!!"
-    text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-    text_group1 = displayio.Group(scale=FONTSCALE,x=50,y=80,)
-    text_group1.append(text_area1)  # Subgroup for text scaling
-    splash.append(text_group1)
+    print_onTFT("History", 70, 40)
+    print_onTFT("Deleted!!", 50, 80)
     
     lst = [0.1,0.01]
     for i in range(len(lst)):
@@ -122,12 +109,8 @@ try:
             time.sleep(lst[i])
 
     led.value = True
-    
     keyboard.release_all()
+    
 except Exception as ex:
     keyboard.release_all()
     raise ex
-
-
-
-
