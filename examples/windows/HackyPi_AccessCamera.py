@@ -28,7 +28,6 @@ tft_mosi= board.GP11 # must be a SPI TX
 tft_rst = board.GP12
 tft_dc  = board.GP8
 tft_cs  = board.GP9
-#tft_bl  = board.GP13
 spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 
 # Make the displayio SPI bus and the GC9A01 display
@@ -43,7 +42,7 @@ color_bitmap = displayio.Bitmap(display.width, display.height, 1)
 color_palette = displayio.Palette(1)
 color_palette[0] = BACKGROUND_COLOR
 
-tft_bl  = board.GP13
+tft_bl  = board.GP13 #gpio pin to control backlight led
 led = digitalio.DigitalInOut(tft_bl)
 led.direction = digitalio.Direction.OUTPUT
 led.value=True
