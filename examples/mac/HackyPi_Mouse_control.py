@@ -69,7 +69,7 @@ def print_onTFT(text, x_pos, y_pos):
     
 inner_rectangle()
 print_onTFT("Welcome to", 30, 40)
-print_onTFT("HackPi", 50, 80)
+print_onTFT("HackyPi", 50, 80)
 
 time.sleep(3)
 x = random.randint(-20, 10)
