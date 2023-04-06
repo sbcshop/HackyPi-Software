@@ -108,8 +108,8 @@ try:
         time.sleep(1) # wait for few time before another move
     
     inner_rectangle()
-    print_onTFT("Right", 40, 40)
-    print_onTFT("Click!", 40, 80)
+    print_onTFT("Thank", 40, 40)
+    print_onTFT("You!", 40, 80)
     time.sleep(1) # wait for few time before another move
     
 except Exception as ex:
