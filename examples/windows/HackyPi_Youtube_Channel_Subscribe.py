@@ -70,7 +70,7 @@ def print_onTFT(text, x_pos, y_pos):
     
 inner_rectangle()
 print_onTFT("Welcome to", 30, 40)
-print_onTFT("HackPi", 60, 80)
+print_onTFT("HackyPi", 60, 80)
 time.sleep(3)
 
 try:
