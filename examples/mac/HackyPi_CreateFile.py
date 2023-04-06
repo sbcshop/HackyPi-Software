@@ -1,6 +1,6 @@
 # Basic Program to run some networking commands and create text file of data
 # Code also display some text on TFT screen
-# This code works for Windows based PC/Laptop but can be modified for Other OS
+# This code works for Mac based PC/Laptop but can be modified for Other OS
 import time
 import os
 import usb_hid
