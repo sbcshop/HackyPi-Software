@@ -13,7 +13,7 @@ from adafruit_hid.keyboard import Keyboard, Keycode
 from keyboard_layout_win_uk import KeyboardLayout
 from adafruit_st7789 import ST7789
 
-# Declare some parameters used to adjust style of text and graphics
+# First set some parameters used for shapes and text
 BORDER = 12
 FONTSCALE = 3
 BACKGROUND_COLOR = 0xFF0000  # red
@@ -42,7 +42,7 @@ color_bitmap = displayio.Bitmap(display.width, display.height, 1)
 color_palette = displayio.Palette(1)
 color_palette[0] = BACKGROUND_COLOR
 
-tft_bl  = board.GP13 #gpio pin to control backlight led
+tft_bl  = board.GP13
 led = digitalio.DigitalInOut(tft_bl)
 led.direction = digitalio.Direction.OUTPUT
 led.value=True
@@ -50,6 +50,7 @@ led.value=True
 bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
 splash.append(bg_sprite)
 
+# This function creates colorful rectangular box 
 def inner_rectangle():
     # Draw a smaller inner rectangle
     inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
@@ -57,21 +58,19 @@ def inner_rectangle():
     inner_palette[0] = FOREGROUND_COLOR
     inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
     splash.append(inner_sprite)
+    
+#Function to print data on TFT
+def print_onTFT(text, x_pos, y_pos): 
+    text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
+    text_group = displayio.Group(scale=FONTSCALE,x=x_pos,y=y_pos,)
+    text_group.append(text_area)  # Subgroup for text scaling
+    splash.append(text_group)
+    
 inner_rectangle()
+print_onTFT("Welcome to", 30, 40)
+print_onTFT("HackPi", 60, 80)
 
-# Draw a label
-text = "Welcome to"
-text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
-text_group = displayio.Group(scale=FONTSCALE,x=30,y=40,)
-text_group.append(text_area)  # Subgroup for text scaling
-splash.append(text_group)
-
-# Draw a label
-text1 = "HackyPi"
-text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-text_group1 = displayio.Group(scale=FONTSCALE,x=50,y=80,)
-text_group1.append(text_area1)  # Subgroup for text scaling
-splash.append(text_group1)
+time.sleep(3)
 
 try:
     keyboard = Keyboard(usb_hid.devices)
@@ -85,43 +84,18 @@ try:
     time.sleep(0.3)
     
     inner_rectangle()
-
-    # Draw a label
-    text1 = "Starting"
-    text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-    text_group1 = displayio.Group(scale=FONTSCALE,x=40,y=40,)
-    text_group1.append(text_area1)  # Subgroup for text scaling
-    splash.append(text_group1)
-    
-    text2 = "Camera..."
-    text_area2 = label.Label(terminalio.FONT, text=text2, color=TEXT_COLOR)
-    text_group2 = displayio.Group(scale=FONTSCALE,x=40,y=80,)
-    text_group2.append(text_area2)  # Subgroup for text scaling
-    splash.append(text_group2)
+    print_onTFT("Starting", 40, 40)
+    print_onTFT("Camera...", 40, 80)
 
     keyboard_layout.write("start microsoft.windows.camera:")
     keyboard.send(Keycode.ENTER)
     time.sleep(1)
     
     inner_rectangle()
-
-    # Draw a label
-    text1 = "Camera"
-    text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-    text_group1 = displayio.Group(scale=FONTSCALE,x=70,y=40,)
-    text_group1.append(text_area1)  # Subgroup for text scaling
-    splash.append(text_group1)
-    
-    text2 = "ON"
-    text_area2 = label.Label(terminalio.FONT, text=text2, color=TEXT_COLOR)
-    text_group2 = displayio.Group(scale=FONTSCALE,x=100,y=80,)
-    text_group2.append(text_area2)  # Subgroup for text scaling
-    splash.append(text_group2)
+    print_onTFT("Camera", 60, 40)
+    print_onTFT("ON", 90, 80)
     keyboard.release_all()
     
 except Exception as ex:
     keyboard.release_all()
     raise ex
-
-
-
