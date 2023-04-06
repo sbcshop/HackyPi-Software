@@ -89,8 +89,9 @@ try:
     time.sleep(1)
     
     inner_rectangle()
+    FONTSCALE = 2
     print_onTFT("Window will", 20, 30)
-    print_onTFT("Restart in", 20, 60)
+    print_onTFT("Restart", 20, 60)
     print_onTFT("In seconds..", 20, 90)
     
     lst = [0.5,0.2,0,0.1,0.01]
