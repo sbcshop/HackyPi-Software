@@ -1,10 +1,9 @@
 # This program demonstrate how HackyPi can works as Mouse to move cursor and do right/left clicks 
 # Code also display some text on TFT screen
-# This code works for Windows based PC/Laptop but can be modified for Other OS
+# This code tested and works for Windows/MAC/Linux
 import time
 import os
 import usb_hid
-import analogio
 import digitalio
 import board
 import busio
@@ -52,6 +51,7 @@ led.value=True
 bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
 splash.append(bg_sprite)
 
+# This function creates colorful rectangular box 
 def inner_rectangle():
     # Draw a smaller inner rectangle
     inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
@@ -59,59 +59,42 @@ def inner_rectangle():
     inner_palette[0] = FOREGROUND_COLOR
     inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
     splash.append(inner_sprite)
+    
+#Function to print data on TFT
+def print_onTFT(text, x_pos, y_pos): 
+    text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
+    text_group = displayio.Group(scale=FONTSCALE,x=x_pos,y=y_pos,)
+    text_group.append(text_area)  # Subgroup for text scaling
+    splash.append(text_group)
+    
 inner_rectangle()
+print_onTFT("Welcome to", 30, 40)
+print_onTFT("HackPi", 50, 80)
 
-# Draw a label
-text = "Welcome to"
-text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
-text_group = displayio.Group(scale=FONTSCALE,x=30,y=40,)
-text_group.append(text_area)  # Subgroup for text scaling
-splash.append(text_group)
-
-# Draw a label
-text1 = "HackyPi"
-text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-text_group1 = displayio.Group(scale=FONTSCALE,x=50,y=80,)
-text_group1.append(text_area1)  # Subgroup for text scaling
-splash.append(text_group1)
-
+time.sleep(3)
 x = random.randint(-20, 10)
 y = random.randint(-20, 10)
 
 try:
     #Creat instance for mouse
     mouse = Mouse(usb_hid.devices)
+    
     #Display text on TFT
     inner_rectangle()
-    # Draw a label
-    text1 = "Cursor"
-    text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-    text_group1 = displayio.Group(scale=FONTSCALE,x=40,y=40,)
-    text_group1.append(text_area1)  # Subgroup for text scaling
-    splash.append(text_group1)
-    
-    text2 = "Move..."
-    text_area2 = label.Label(terminalio.FONT, text=text2, color=TEXT_COLOR)
-    text_group2 = displayio.Group(scale=FONTSCALE,x=40,y=80,)
-    text_group2.append(text_area2)  # Subgroup for text scaling
-    splash.append(text_group2)
+    print_onTFT("Cursor", 40, 40)
+    print_onTFT("Move...", 40, 80)
     
     time.sleep(2)  # Debounce delay
     
     #procedure for random movement of cursor 
-    for i in range(5):
+    for i in range(10):
         x = random.randint(-300, 300)
         y = random.randint(-300, 700)
         strData = 'x= ' + str(x) + '\ny= ' + str(y)
         print(strData) #prints current cursor position on terminal
         
         inner_rectangle()
-        # Draw a label
-        text1 = strData
-        text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-        text_group1 = displayio.Group(scale=FONTSCALE,x=40,y=40,)
-        text_group1.append(text_area1)  # Subgroup for text scaling
-        splash.append(text_group1)
+        print_onTFT(strData, 40, 40)
         
         mouse.move(x)
         mouse.move(y)
@@ -120,19 +103,14 @@ try:
         mouse.click(mouse.RIGHT_BUTTON)
         
         inner_rectangle()
-        # Draw a label
-        text1 = "Right"
-        text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-        text_group1 = displayio.Group(scale=FONTSCALE,x=40,y=40,)
-        text_group1.append(text_area1)  # Subgroup for text scaling
-        splash.append(text_group1)
-        
-        text2 = "Click!"
-        text_area2 = label.Label(terminalio.FONT, text=text2, color=TEXT_COLOR)
-        text_group2 = displayio.Group(scale=FONTSCALE,x=40,y=80,)
-        text_group2.append(text_area2)  # Subgroup for text scaling
-        splash.append(text_group2)
-        
+        print_onTFT("Right", 40, 40)
+        print_onTFT("Click!", 40, 80)
         time.sleep(1) # wait for few time before another move
+    
+    inner_rectangle()
+    print_onTFT("Right", 40, 40)
+    print_onTFT("Click!", 40, 80)
+    time.sleep(1) # wait for few time before another move
+    
 except Exception as ex:
     raise ex
