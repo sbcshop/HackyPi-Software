@@ -1,4 +1,4 @@
-# Basic Program to run some networking commands
+# Basic Program to run some networking commands and create text file of data
 # Code also display some text on TFT screen
 # This code works for Windows based PC/Laptop but can be modified for Other OS
 import time
