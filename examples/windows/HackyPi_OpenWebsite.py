@@ -55,6 +55,7 @@ color_palette[0] = BACKGROUND_COLOR
 bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
 splash.append(bg_sprite)
 
+# This function creates colorful rectangular box
 def inner_rectangle():
     # Draw a smaller inner rectangle
     inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
@@ -62,22 +63,18 @@ def inner_rectangle():
     inner_palette[0] = FOREGROUND_COLOR
     inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
     splash.append(inner_sprite)
+
+#Function to print data on TFT
+def print_onTFT(text, x_pos, y_pos): 
+    text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
+    text_group = displayio.Group(scale=FONTSCALE1,x=x_pos,y=y_pos)
+    text_group.append(text_area)  # Subgroup for text scaling
+    splash.append(text_group)
+    
 inner_rectangle()
-
-# Procedure to display Text on TFT
-text = "Welcome to"
-text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
-text_group = displayio.Group(scale=FONTSCALE1,x=30,y=40,)
-text_group.append(text_area)  # Subgroup for text scaling
-splash.append(text_group)
-
-text1 = "HackyPi"
-text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-text_group1 = displayio.Group(scale=FONTSCALE1,x=50,y=80,)
-text_group1.append(text_area1)  # Subgroup for text scaling
-splash.append(text_group1)
-
-time.sleep(1)
+print_onTFT("Welcome to", 30, 40)
+print_onTFT("HackPi", 60, 80)
+time.sleep(2)
 
 try:
     # routine to mimic USB HID devices like keyboard, mouse, etc. through HackyPi
@@ -100,35 +97,24 @@ except Exception as ex:
 
 time.sleep(1)
 
-def inner_rectangle1():
+
+def draw_rectangle():
     # Draw a small inner rectangle
     inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
     inner_palette = displayio.Palette(1)
     inner_palette[0] = 0x00FFFF  #cryon
     inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
     splash.append(inner_sprite)
+
+#Function to print data on TFT
+def print_onTFT(text, x_pos, y_pos): 
+    text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
+    text_group = displayio.Group(scale=FONTSCALE,x=x_pos,y=y_pos,)
+    text_group.append(text_area)  # Subgroup for text scaling
+    splash.append(text_group)
     
-inner_rectangle1()
-
-# Draw a label
-text = "SB COMPONENTS"
-text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
-text_group = displayio.Group(scale=FONTSCALE,x=20,y=30,)
-text_group.append(text_area)  # Subgroup for text scaling
-splash.append(text_group)
-
-# Draw a label
-text1 = "THANKS FOR BUYING"
-text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-text_group1 = displayio.Group(scale=FONTSCALE,x=20,y=60,)
-text_group1.append(text_area1)  # Subgroup for text scaling
-splash.append(text_group1)
-
-text3 = "OUR PRODUCTS...."
-text_area3 = label.Label(terminalio.FONT, text=text3, color=TEXT_COLOR)
-text_group3 = displayio.Group(scale=FONTSCALE,x=20,y=90,)
-text_group3.append(text_area3)  # Subgroup for text scaling
-splash.append(text_group3)
-
+draw_rectangle()
+print_onTFT("SB COMPONENTS", 20, 30)
+print_onTFT("THANKS FOR BUYING", 20, 60)
+print_onTFT("OUR PRODUCTS....", 20, 90)
 time.sleep(2)
-
