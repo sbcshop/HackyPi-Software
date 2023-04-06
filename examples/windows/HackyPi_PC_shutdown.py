@@ -1,6 +1,5 @@
-# Basic Program to shutdown PC/laptop
-# Code also display some text on TFT screen
-# This code tested for Windows based PC/Laptop but can be modified for Other OS
+# This Program of HackyPi makes your PC/Laptop restart  
+# Code tested for Windows based PC/Laptop but can be modified for Other OS
 import time
 import os
 import usb_hid
@@ -19,7 +18,7 @@ BORDER = 12
 FONTSCALE = 3
 BACKGROUND_COLOR = 0xFF0000  # red
 FOREGROUND_COLOR = 0xFFFF00  # Purple
-TEXT_COLOR = 0x000000
+TEXT_COLOR = 0x0000ff
 
 # Release any resources currently in use for the displays
 displayio.release_displays()
@@ -29,7 +28,6 @@ tft_mosi= board.GP11 # must be a SPI TX
 tft_rst = board.GP12
 tft_dc  = board.GP8
 tft_cs  = board.GP9
-#tft_bl  = board.GP13
 spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 
 # Make the displayio SPI bus and the GC9A01 display
@@ -44,7 +42,8 @@ color_bitmap = displayio.Bitmap(display.width, display.height, 1)
 color_palette = displayio.Palette(1)
 color_palette[0] = BACKGROUND_COLOR
 
-tft_bl  = board.GP13
+#define led (as backlight) pin as output
+tft_bl  = board.GP13 #GPIO pin to control backlight LED
 led = digitalio.DigitalInOut(tft_bl)
 led.direction = digitalio.Direction.OUTPUT
 led.value=True
@@ -52,6 +51,7 @@ led.value=True
 bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
 splash.append(bg_sprite)
 
+# This function creates colorful rectangular box 
 def inner_rectangle():
     # Draw a smaller inner rectangle
     inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
@@ -59,21 +59,18 @@ def inner_rectangle():
     inner_palette[0] = FOREGROUND_COLOR
     inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
     splash.append(inner_sprite)
+    
+#Function to print data on TFT
+def print_onTFT(text, x_pos, y_pos): 
+    text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
+    text_group = displayio.Group(scale=FONTSCALE,x=x_pos,y=y_pos,)
+    text_group.append(text_area)  # Subgroup for text scaling
+    splash.append(text_group)
+    
 inner_rectangle()
-
-# Draw a label
-text = "Welcome to"
-text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
-text_group = displayio.Group(scale=FONTSCALE,x=30,y=40,)
-text_group.append(text_area)  # Subgroup for text scaling
-splash.append(text_group)
-
-# Draw a label
-text1 = "HackyPi"
-text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-text_group1 = displayio.Group(scale=FONTSCALE,x=50,y=80,)
-text_group1.append(text_area1)  # Subgroup for text scaling
-splash.append(text_group1)
+print_onTFT("Welcome to", 30, 40)
+print_onTFT("HackPi", 60, 80)
+time.sleep(3)
 
 try:
     keyboard = Keyboard(usb_hid.devices)
@@ -87,34 +84,16 @@ try:
     time.sleep(0.5)
     keyboard.send(Keycode.F11)
     time.sleep(1.2)
-    keyboard_layout.write("start shutdown /s") #shutdown command for PC/Laptop
+    keyboard_layout.write("start shutdown /s") #restart command for PC/Laptop
     keyboard.send(Keycode.ENTER)
-    time.sleep(1)    
-
+    time.sleep(1)
     
     inner_rectangle()
-
-    # Draw a label
-    text = "Window will"
-    text_area = label.Label(terminalio.FONT, text=text, color=TEXT_COLOR)
-    text_group = displayio.Group(scale=FONTSCALE,x=20,y=30,)
-    text_group.append(text_area)  # Subgroup for text scaling
-    splash.append(text_group)
-
-    # Draw a label
-    text1 = "ShutDown in"
-    text_area1 = label.Label(terminalio.FONT, text=text1, color=TEXT_COLOR)
-    text_group1 = displayio.Group(scale=FONTSCALE,x=20,y=60,)
-    text_group1.append(text_area1)  # Subgroup for text scaling
-    splash.append(text_group1)
+    FONTSCALE = 2
+    print_onTFT("Window will", 20, 30)
+    print_onTFT("Shutdown", 20, 60)
+    print_onTFT("In seconds..", 20, 90)
     
-    text2 = "In seconds.."
-    text_area2 = label.Label(terminalio.FONT, text=text2, color=TEXT_COLOR)
-    text_group2 = displayio.Group(scale=FONTSCALE,x=20,y=90,)
-    text_group2.append(text_area2)  # Subgroup for text scaling
-    splash.append(text_group2)
-    
-    #simple procedure to flash/blink TFT
     lst = [0.5,0.2,0,0.1,0.01]
     for i in range(len(lst)):
         for j in range(10):
@@ -124,9 +103,8 @@ try:
             time.sleep(lst[i])
 
     led.value = True
-    
     keyboard.release_all()
+    
 except Exception as ex:
     keyboard.release_all()
     raise ex
-
