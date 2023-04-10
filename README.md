@@ -14,17 +14,22 @@ HackyPi is a compact and versatile USB device powered by the RP2040 microcontrol
 Then you see a new device named "RPI-RP2" drag file ["firmware.uf2"](https://github.com/sbcshop/HackyPi-Software/blob/main/firmware.uf2) available in this repository to the device as shown in figure:
     , or you can download from Circuitpython official website [click here](https://circuitpython.org/board/raspberry_pi_pico/)
      
-     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img13.png" />  
-     When you properly insert the circuitpython then you see a new device that looks like the below image:-
+     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img13.png" /> 
+     <img src= "https://github.com/sbcshop/HackyPi-Software/blob/main/images/HackyPi_bootloader_install.gif" />
+
+Now at this step bootloader installed properly inside Hackypi. To verify remove device and re-insert into PC/Laptop, no need to press boot button. 
+This time you will see a new device as shown in the below image:-
      <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img11.png" />
 
-
-3. After this go to run->select interpreter,choose device and port
+**Running First Code in HackyPi**
+1. Start Thonny IDE application, after this go to run->select interpreter, choose device and suitable com port
     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img18.png" />
     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img19.png" />
+    Write simple python code and click on green run button
     <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img20.png" />
+    <img src= "https://github.com/sbcshop/HackyPi-Software/blob/main/images/sample_hello_program.png" />
 
-4. Copy all the files (library files) from [```lib```](https://github.com/sbcshop/HackyPi-Software/tree/main/lib) folder of this repository and paste inside the HackyPi ```lib``` folder
+2. Now you are ready to try out your own codes. Even you can try some of below Example codes provided, for that just copy all the files (library files) from [```lib```](https://github.com/sbcshop/HackyPi-Software/tree/main/lib) folder of this repository and paste inside the HackyPi ```lib``` folder
 
 ## Examples Codes  
 This repository consist of Example folder there are two files:
