@@ -2,6 +2,7 @@ import os
 import board
 import terminalio
 import displayio
+import digitalio
 from adafruit_display_text import label
 from adafruit_st7789 import ST7789
 import busio
@@ -32,6 +33,11 @@ display = ST7789(display_bus, rotation=270, width=240, height=135, rowstart=40, 
 # Make the display context
 splash = displayio.Group()
 display.show(splash)
+
+tft_bl  = board.GP13
+led = digitalio.DigitalInOut(tft_bl)
+led.direction = digitalio.Direction.OUTPUT
+led.value=True
 
 bmpfiles = sorted("/images/" + fn for fn in os.listdir("/images") if fn.lower().endswith("bmp")) 
 
