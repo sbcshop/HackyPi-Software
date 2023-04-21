@@ -42,7 +42,7 @@ This example folder in repository which includes ready to use and experimental c
     - Example 2: [Control Mouse](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_Mouse_control.py) 
     - Example 3: [Open website](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_openWebsite.py) and Many more...
 
-Play with it and plus build your own, **Happy Coding!** 
+Play with it and create your own, **Happy Coding!** 
 
 ## Documentation
 
