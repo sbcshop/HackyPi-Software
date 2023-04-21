@@ -1,7 +1,7 @@
 # HackyPi-Software
 HackyPi is a compact and versatile USB device powered by the RP2040 microcontroller. It is a powerful tool for both ethical hacking and learning programming, compatible with all major operating systems. You can program using python language. Its sleek and modern design, combined with a user-friendly interface, makes it easy to use for beginners and experts alike. HackyPi is highly portable.
 
-<img src = "https://github.com/sbcshop/HackyPi-Software/blob/main/images/img.png"/>
+<img src = "https://cdn.shopify.com/s/files/1/1217/2104/files/HackyPI2copy.jpg?v=1681998205"/>
 
 ## Setup HackyPi
 1. Download and Install Thonny IDE for your respective OS from Link [Download Thonny](https://thonny.org/)
