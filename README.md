@@ -16,7 +16,7 @@ Then you see a new device named "RPI-RP2" drag file ["firmware.uf2"](https://git
      <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img13.png" /> 
      <img src= "https://github.com/sbcshop/HackyPi-Software/blob/main/images/HackyPi_bootloader_install.gif" />
 After downloading just copy and paste firmware file to "RPI-RP2" folder and then remove the device.
-Now at this step bootloader installed properly inside RP2040 of Hackypi. To verify remove device and re-insert into PC/Laptop, no need to press boot button. 
+Now at this step bootloader installed properly inside Pico of Hackypi. To verify remove device and re-insert into PC/Laptop, no need to press boot button. 
 This time you will see a new device as shown in the below image:-
      <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img11.png" />
 
