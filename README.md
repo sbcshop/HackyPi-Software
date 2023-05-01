@@ -11,13 +11,12 @@ HackyPi is a compact and versatile USB device powered by the RP2040 microcontrol
 2. Adding **CircuitPython** bootloader in HackyPi 
 
      For this first you need to *Press and Hold* the boot button on HackyPi, without releasing the button connect it to USB port of PC/laptop. 
-Then you see a new device named "RPI-RP2" drag file ["firmware.uf2"](https://github.com/sbcshop/HackyPi-Software/blob/main/firmware.uf2) available in this repository to the device as shown in figure:
-    , or you can download from Circuitpython official website [click here](https://circuitpython.org/board/raspberry_pi_pico/)
+Then you see a new device named "RPI-RP2" drag file ["firmware.uf2"](https://github.com/sbcshop/HackyPi-Software/blob/main/firmware.uf2) available in this repository to the device as shown in figure, or you can download from Circuitpython official website [click here](https://circuitpython.org/board/raspberry_pi_pico/)
      
      <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img13.png" /> 
      <img src= "https://github.com/sbcshop/HackyPi-Software/blob/main/images/HackyPi_bootloader_install.gif" />
-
-Now at this step bootloader installed properly inside Hackypi. To verify remove device and re-insert into PC/Laptop, no need to press boot button. 
+After downloading just copy and paste firmware file to "RPI-RP2" folder and then remove the device.
+Now at this step bootloader installed properly inside RP2040 of Hackypi. To verify remove device and re-insert into PC/Laptop, no need to press boot button. 
 This time you will see a new device as shown in the below image:-
      <img src= "https://github.com/sbcshop/RoundyPi/blob/main/images/img11.png" />
 
