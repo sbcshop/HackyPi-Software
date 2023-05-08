@@ -47,6 +47,7 @@ Play with it and create your own, **Happy Coding!**
 
 * [HackyPi Hardware](https://github.com/sbcshop/HackyPi-Hardware) 
 * [HackyPi Schematic](https://github.com/sbcshop/HackyPi-Hardware/blob/main/Design%20Data/SCH.pdf) 
+* [HackyPi StepFile](https://github.com/sbcshop/HackyPi-Hardware/blob/main/Mechanical%20Data/HackyPi.step)
 * [CircuitPython getting started](https://learn.adafruit.com/welcome-to-circuitpython/what-is-circuitpython)
 * [RP2040 Datasheet](https://github.com/sbcshop/HackyPi-Hardware/blob/main/Documents/rp2040-datasheet.pdf)
 * [HackyPi Hardware Design](https://github.com/sbcshop/HackyPi-Hardware/tree/main/Design%20Data)
