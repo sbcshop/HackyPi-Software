@@ -30,6 +30,11 @@ This time you will see a new device as shown in the below image:-
 
 2. Now you are ready to try out your own codes. Even you can try some of below Example codes provided, for that just copy all the files (library files) from [```lib```](https://github.com/sbcshop/HackyPi-Software/tree/main/lib) folder of this repository and paste inside the HackyPi ```lib``` folder
 
+### Run Script Standalone without Thonny IDE
+   Follow below steps to save your script to device, once done then remove device and reinsert in PC to run your script without the need of Thonny IDE. Meaning you can now plug to USB Port and your code will be executed by HackyPi.
+   
+<img src= "https://github.com/sbcshop/HackyPi-Software/blob/main/images/Run-Script-standalone.gif" />
+
 ## Examples Codes  
 This example folder in repository includes ready to use and experimental code with HackyPi 
   * [Windows](https://github.com/sbcshop/HackyPi-Software/tree/main/examples/mac) - This directory includes examples of HackyPi for Windows OS, for example
