@@ -33,7 +33,7 @@ This time you will see a new device as shown in the below image:-
 ### Run Script Standalone without Thonny IDE
    Follow below steps to save your script to device, once done then remove device and reinsert in PC to run your script without the need of Thonny IDE. Meaning you can now plug to USB Port and your code will be executed by HackyPi.
    
-   **And remember to save your script as _code.py_ name into HackyPi device otherwise script will not run after inserting into USB.**
+   **And remember to save your script as _code.py_ name into device otherwise script will not run after inserting into USB.**
    
 <img src= "https://github.com/sbcshop/HackyPi-Software/blob/main/images/Run-Script-standalone.gif" />
 
