@@ -39,11 +39,11 @@ This time you will see a new device as shown in the below image:-
 
 ## Examples Codes  
 This example folder in repository includes ready to use and experimental code with HackyPi 
-  * [Windows](https://github.com/sbcshop/HackyPi-Software/tree/main/examples/mac) - This directory includes examples of HackyPi for Windows OS, for example
+  * [Windows](https://github.com/sbcshop/HackyPi-Software/tree/main/examples/windows) - This directory includes examples of HackyPi for Windows OS, for example
     - Example 1: [To Access Camera](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/windows/HackyPi_AccessCamera.py)
     - Example 2: [Make Cool Fake Hacking with Friends laptop](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/windows/HackyPi_CoolFake_Hacking.py) 
     - Example 3: [Just connect HackyPi and your System will Shutdown](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/windows/HackyPi_PC_shutdown.py) and Many more...
-  * [Mac](https://github.com/sbcshop/HackyPi-Software/tree/main/examples/windows) - This directory includes examples of HackyPi Use in Mac OS
+  * [Mac](https://github.com/sbcshop/HackyPi-Software/tree/main/examples/mac) - This directory includes examples of HackyPi Use in Mac OS
     - Example 1: [Delete Browsing History](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_DeleteBrowsing_History.py)
     - Example 2: [Control Mouse](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_Mouse_control.py) 
     - Example 3: [Open website](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_openWebsite.py) and Many more...
