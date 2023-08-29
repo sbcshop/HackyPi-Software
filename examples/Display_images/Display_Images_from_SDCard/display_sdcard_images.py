@@ -17,6 +17,11 @@ sdcard = adafruit_sdcard.SDCard(spi, cs)
 vfs = storage.VfsFat(sdcard)
 storage.mount(vfs, "/sd")
 
+tft_bl = board.GP13
+led = digitalio.DigitalInOut(tft_bl)
+led.direction = digitalio.Direction.OUTPUT
+led.value=True
+
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
@@ -29,9 +34,9 @@ tft_bl  = board.GP13
 spi = busio.SPI(clock=tft_clk, MOSI=tft_mosi)
 
     
-# Make the displayio SPI bus and the GC9A01 display
+# Make the displayio SPI bus
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
-display = ST7789(display_bus, rotation=270, width=240, height=135, rowstart=40, colstart=53)
+display = ST7789(display_bus, rotation=180, width=240, height=135, rowstart=40, colstart=53)
 
 # Make the main display context
 main = displayio.Group()
