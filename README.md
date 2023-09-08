@@ -49,6 +49,12 @@ This example folder in repository includes ready to use and experimental code wi
     - Example 3: [Open website](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_openWebsite.py) and Many more...
 
 Play with it and create your own, **Happy Coding!** 
+### Reverse Shell
+You can also find a **Reverse Shell** [payload generator](https://github.com/sbcshop/HackyPi-Software/blob/main/reverse-shell), compatible with _Linux_ and _Windows_
+
+ ![image](https://github.com/leggiand/HackyPi-Software/assets/114882821/a1f0850d-5450-49b5-acd3-b3512be20fe7)
+
+ **Learn more in the [Wiki]()**
 
 ## Documentation
 
