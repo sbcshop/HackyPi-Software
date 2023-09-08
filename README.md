@@ -54,6 +54,7 @@ You can also find a **Reverse Shell** [payload generator](https://github.com/sbc
 
 > This script will save a custom payload to copy to the HackPi, then enter listening mode
 
+_it requires python3 and pysimplegui lib_
 1. launch the script from a *terminal*
 2. enter the path where the payload will be saved, or dont if you want just enter in listening mode
  ![image](https://github.com/leggiand/HackyPi-Software/assets/114882821/b8b6d5d6-19fe-43d9-a9dc-e26c397d0d92)
