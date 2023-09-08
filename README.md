@@ -52,10 +52,24 @@ Play with it and create your own, **Happy Coding!**
 ### Reverse Shell
 You can also find a **Reverse Shell** [payload generator](https://github.com/sbcshop/HackyPi-Software/blob/main/reverse-shell), compatible with _Linux_ and _Windows_
 
- ![image](https://github.com/leggiand/HackyPi-Software/assets/114882821/a1f0850d-5450-49b5-acd3-b3512be20fe7)
+> This script will save a custom payload to copy to the HackPi, then enter listening mode
 
- **Learn more in the [Wiki]()**
+1. launch the script from a *terminal*
+2. enter the path where the payload will be saved, or dont if you want just enter in listening mode
+ ![image](https://github.com/leggiand/HackyPi-Software/assets/114882821/b8b6d5d6-19fe-43d9-a9dc-e26c397d0d92)
+3. Select the desired port
+4. Enter the ip of listener machine, almost everytime is your ip 
+5. Choose the target os
 
+    ![image](https://github.com/leggiand/HackyPi-Software/assets/114882821/a1f0850d-5450-49b5-acd3-b3512be20fe7)
+7. submit and enter in listening mode
+
+   ![image](https://github.com/leggiand/HackyPi-Software/assets/114882821/59613499-c51e-4092-9ea6-da205aa6d27c)
+
+8. copy the payload to the HackPi    
+
+   ![image](https://github.com/leggiand/HackyPi-Software/assets/114882821/f45a5e3e-0890-4c17-b6ea-a63155b649ac)
+9. Have Fun!!! :)
 ## Documentation
 
 * [HackyPi Hardware](https://github.com/sbcshop/HackyPi-Hardware) 
