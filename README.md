@@ -47,7 +47,8 @@ This example folder in repository includes ready to use and experimental code wi
     - Example 1: [Delete Browsing History](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_DeleteBrowsing_History.py)
     - Example 2: [Control Mouse](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_Mouse_control.py) 
     - Example 3: [Open website](https://github.com/sbcshop/HackyPi-Software/blob/main/examples/mac/HackyPi_openWebsite.py) and Many more...
-
+  * [Image Display](https://github.com/sbcshop/HackyPi-Software/tree/main/examples/Display_images) - This folder contains examples to display images on HackyPi
+   
 Play with it and create your own, **Happy Coding!** 
 
 ## Documentation
